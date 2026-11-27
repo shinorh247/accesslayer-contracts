@@ -402,10 +402,7 @@ pub mod fee {
         let Some(sum) = creator_bps.checked_add(protocol_bps) else {
             return false;
         };
-        if sum == 0 || sum > BPS_MAX {
-            return false;
-        }
-        true
+        sum != 0 && sum <= BPS_MAX
     }
 
     /// Shared guard for fee config updates that need structured contract errors.
